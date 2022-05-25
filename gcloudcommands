@@ -1,0 +1,7 @@
+kubectl create secret generic pubsub-key --from-file=key.json=/home/sravangcp/gcp-key.json
+
+gcloud pubsub topics create PubSubDemo
+gcloud pubsub subscriptions create punSubDemoSubscription --topic PubSubDemo --ack-deadline=60
+
+gcloud pubsub topics delete PubSubDemo
+gcloud pubsub subscriptions delete punSubDemoSubscription
