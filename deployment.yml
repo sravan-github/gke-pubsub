@@ -21,13 +21,6 @@ spec:
           env:
             - name: "GOOGLE_APPLICATION_CREDENTIALS"
               value: "/var/run/secret/cloud.google.com/service-account.json"
-            - name: "PROJECT_ID"
-              valueFrom:
-                configMapKeyRef:
-                  name: echo
-                  key: project-id
-            - name: "TOPIC"
-              value: "PubSubDemo"
           volumeMounts:
             - name: "service-account"
               mountPath: "/var/run/secret/cloud.google.com"
