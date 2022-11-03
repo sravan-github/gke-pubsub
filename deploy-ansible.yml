@@ -1,0 +1,21 @@
+---
+- name: Create bucket
+  hosts: localhost
+  gather_facts: no
+
+  environment:
+    KUBECONFIG: "kubeconfigfilepath"
+
+  vars:
+    service_account_file: /home/sravangcp/gcp-key.json
+    project: gcp-practice-secondary-prj
+    auth_kind: serviceaccount
+    scopes:
+      - https://www.googleapis.com/auth/compute
+
+  tasks:
+  - name: gcp bucket
+    command: gsutil mb gs://test_5_23_136
+
+  - name: deployment file
+    commands: kubectl apply -f deployment.yml
